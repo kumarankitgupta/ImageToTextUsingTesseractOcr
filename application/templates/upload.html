@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="justify-content-center mt-4">
+    <Center>
+        <h4>Upload The image File To be Translated</h4>
+    </Center>
+</div>
+{{ dropzone.create(action='upload') }}
+{{ dropzone.load_js() }}
+{{ dropzone.config() }}
+
+{% endblock %}
