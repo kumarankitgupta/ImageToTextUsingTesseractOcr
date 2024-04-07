@@ -13,4 +13,4 @@ class QRCodeData(FlaskForm):
                             Length(min=1, max=250)]
     )
     language = SelectField("Language to translate to", choices=languages_choice)
-    submit = SubmitField('Initiate Translation') 
+    submit = SubmitField('Initiate Translation to Audio') 
