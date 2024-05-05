@@ -24,6 +24,7 @@ def index():
 @app.route("/capture", methods=["POST"])
 def capture():
     if 'image_data' in request.json:
+        # print(request.json['image_data'])
         # set a session value
         base64_image = request.json['image_data']
         image_data = base64.b64decode(base64_image.split(',')[1])
@@ -61,6 +62,7 @@ def capture():
         session["sentence"] = sentence
         # delete file after you are done working with it
         os.remove(file_location)
+        # print(session.get("sentence"))
         return {'sentence':session.get("sentence")}
 
     else:
@@ -133,7 +135,7 @@ def decoded():
     form =QRCodeData() 
 
     if request.method == "POST":
-        print('2')
+        
         generated_audio_filename = secrets.token_hex(10) + ".mp4"
         text_data = form.data_field.data
         translate_to = form.language.data
@@ -145,7 +147,7 @@ def decoded():
         tts = gTTS(translated_text, lang=translate_to)
 
 
-        print('3')
+        
         file_location = os.path.join(
                             app.config['AUDIO_FILE_UPLOAD'], 
                             generated_audio_filename
